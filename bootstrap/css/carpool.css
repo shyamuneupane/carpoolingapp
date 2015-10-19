@@ -1,0 +1,11 @@
+body{
+    
+    position: absolute;
+    width: 768 px;
+    background-color: aliceblue;
+    text-align: center;
+}
+header{
+    font-size: 25px;
+    color: cadetblue;
+}

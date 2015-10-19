@@ -14,11 +14,11 @@ $email= filter_input(INPUT_POST, "email");
 if(!$name || !$pass || !$email){
     
     
-    header("Location: ../view/login.php");
+    header("Location: ../view/signup-form.php");
     $_SESSION['message']="Field can't be empty.";
     exit(0);
 }
-echo $name;
+
 
 $stmt = $db->prepare("INSERT INTO users VALUES (NULL, :username, :password, :email, CURRENT_DATE )");
 $stmt->execute(array(':username'=>$name,':password'=>$pass,':email'=>$email));

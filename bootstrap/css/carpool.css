@@ -8,10 +8,11 @@ body{
 .container{
     background-color: white;
     position: absolute;
-    width: 768px;
-    margin-top: 200px;
-    margin-left: 550px;
-    margin-right: 350px;
+    width: 75%;
+    margin-top: 15px;
+    margin-left: 250px;
+    margin-right: 150px;
+    
     text-align: center;
 }
 header{
@@ -19,6 +20,10 @@ header{
     color: cadetblue;
 }
 .form-control{
-    width: 50%;
-    margin-left: 200px;
+    width: 30%;
+    align-content: center;
+    
+}
+.center-form{
+    text-align: center;
 }

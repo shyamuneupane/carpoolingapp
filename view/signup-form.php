@@ -4,9 +4,16 @@ include '../view/top.html'
 
 
     <br><br>
+
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+   <h1 class="text-center">Please register for new user</h1>
+</div>
+    <div class="modal-body">
     <form action="../controller/signup-submit.php" method="post" class="form-signin">
         
-        <h2 class="form-signin-heading">Please register for new user</h2>
+       
             
    <label for="inputUsername" class="sr-only">User Name</label>
     <input type="text" name="username" required placeholder="user name" class="form-control"><br>
@@ -16,8 +23,9 @@ include '../view/top.html'
     <input type="submit" value="Register" class="btn btn-lg btn-primary btn-block">  
         
     </form>
-        
-        
+    </div>   
+    </div>
+</div>
    <!--<form action="../controller/signup-submit.php" method="post" >-->
         
     

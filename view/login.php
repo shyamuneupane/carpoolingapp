@@ -1,4 +1,8 @@
-<?php include '../view/top.html'?>
+<?php include '../view/top.html'
+
+
+
+?>
 
     <form action="../controller/login-submit.php" method="post" class="form-signin">
         <fieldset>

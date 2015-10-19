@@ -15,11 +15,11 @@ include '../view/top.html'
         
        
             
-   <label for="inputUsername" class="sr-only">User Name</label>
+   <label for="inputUsername" >User Name</label>
     <input type="text" name="username" required placeholder="user name" class="form-control"><br>
-    <label for="inputUsername" class="sr-only">Password</label> <input type="password" name="password" required placeholder="password" class="form-control"><br>
-    <label for="inputUsername" class="sr-only">Re-Password</label><input type="password" name="repassword" required placeholder="re-enter password" class="form-control"><br>
-    <label for="inputUsername" class="sr-only">Email</label><input type="text" name="email" required placeholder="email" class="form-control"><br>
+    <label for="inputUsername" >Password</label> <input type="password" name="password" required placeholder="password" class="form-control"><br>
+    <label for="inputUsername" >Re-Password</label><input type="password" name="repassword" required placeholder="re-enter password" class="form-control"><br>
+    <label for="inputUsername" >Email</label><input type="text" name="email" required placeholder="email" class="form-control"><br>
     <input type="submit" value="Register" class="btn btn-lg btn-primary btn-block">  
         
     </form>

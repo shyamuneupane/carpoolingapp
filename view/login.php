@@ -15,11 +15,11 @@
     <div class="modal-body">
       <form class="col-md-12 center-block" action="../controller/login-submit.php" method="post">
      
-        <label for="inputUsername" class="sr-only">User Name</label>
+        <label for="inputUsername">User Name</label>
         <input type="text" name="username" id="inputEmail" class="form-control" placeholder="User Name" required="" autofocus=""><br>
          
          
-              <label for="inputPassword" class="sr-only">Password</label>
+              <label for="inputPassword" >Password</label>
               <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required=""><br>
           
         

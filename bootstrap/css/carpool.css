@@ -1,11 +1,24 @@
 body{
     
+   
+    background-color:darkgrey;
+    text-align: center;
+    
+}
+.container{
+    background-color: white;
     position: absolute;
-    width: 768 px;
-    background-color: aliceblue;
+    width: 768px;
+    margin-top: 200px;
+    margin-left: 550px;
+    margin-right: 350px;
     text-align: center;
 }
 header{
     font-size: 25px;
     color: cadetblue;
+}
+.form-control{
+    width: 50%;
+    margin-left: 200px;
 }

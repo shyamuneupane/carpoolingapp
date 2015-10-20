@@ -25,6 +25,13 @@ if(!isset($_SESSION['username'])){
         <button class="btn btn-primary" id="share">                            
             <span>Share you ride</span>
         </button>
+        <input type="hidden" id="uid" value="<?=$_SESSION['uid'] ?>"
+    
+    <br><br>
+    
+    
+    <hr class="header-devider">
+    <div id="trip_head" ></div>
     
 </div>
 <?php 

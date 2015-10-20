@@ -7,19 +7,24 @@ if(!isset($_SESSION['username'])){
 }
 
 ?>
-
+ 
 <a href="../controller/logout.php" id="signout">signout  (<?= $_SESSION['username'] ?>)</a>
 
 <hr class="header-devider" >
+
+  
 <div class="carpoolmain">
-    <form method="post" action="">
     
-    <textarea placeholder="please share you ride here" required rows="3" cols="150" class="comment"></textarea>
-    <input type="submit" value="Share your ride" class="btn btn-primary" class="comment">     
-    <input type="hidden" name="username" value="<?=$_SESSION['username'] ?>">
-        <input type="hidden" name="uid" value="<?=$_SESSION['uid'] ?>">
+    <div class="input-group">
     
-    </form>
+       
+</div>
+  
+     <textarea placeholder="please share you ride here" required rows="3" cols="150"  class="comment" style="resize:none" id="commenttext"></textarea>
+   
+        <button class="btn btn-primary" id="share">                            
+            <span>Share you ride</span>
+        </button>
     
 </div>
 <?php 

@@ -36,12 +36,8 @@ include '../view/top.html'
    <label for="inputUsername" >User Name</label>
     <input type="text" name="username" required placeholder="user name" class="form-control"><br>
         
-    <label for="password" >Password</label> <input type="password" name="password" required placeholder="password" class="form-control" id="password"><label id="password-change"></label><br>
-        
-
-     <label for="inputUsername" >User Name</label>
-    <input type="text" name="username" required placeholder="user name" class="form-control"><br>
-    <label for="inputUsername" >Password</label> <input type="password" name="password" required placeholder="password" class="form-control" id="password"><br>
+      
+<label for="inputUsername" >Password</label> <input type="password" name="password" required placeholder="password" class="form-control" id="password"><br>
     <label for="inputUsername" >Confirm Password</label><input type="password" name="confirmpassword" required placeholder="confirm password" class="form-control" id="confirmpassword"><br>
     <label for="inputUsername" >Email</label><input type="text" name="email" required placeholder="email" class="form-control"><br>
     <input type="submit" id ="register" value="Register" class="btn btn-lg btn-primary btn-block">  

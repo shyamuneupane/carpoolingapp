@@ -1,9 +1,18 @@
-<?php
+
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    
+<script type="text/javascript" src="http://www.technicalkeeda.com/js/javascripts/plugin/jquery.js"></script>
+  
+<script src="../js/signup.js" type="text/javascript" ></script>
+    </head>
+   <body>
+    <?php
 include '../view/top.html'
     ?>
-
-<script src="signup.js" type="text/javascript" ></script>
-    <br><br>
+<br><br>
 
 <div class="modal-dialog">
 <div class="modal-content">
@@ -20,7 +29,7 @@ include '../view/top.html'
     <label for="inputUsername" >Password</label> <input type="password" name="password" required placeholder="password" class="form-control" id="password"><br>
     <label for="inputUsername" >Confirm Password</label><input type="password" name="confirmpassword" required placeholder="confirm password" class="form-control" id="confirmpassword"><br>
     <label for="inputUsername" >Email</label><input type="text" name="email" required placeholder="email" class="form-control"><br>
-    <input type="submit" value="Register" class="btn btn-lg btn-primary btn-block" id="register">  
+    <input type="submit" id ="register" value="Register" class="btn btn-lg btn-primary btn-block">  
         
     </form>
     </div>   
@@ -30,6 +39,6 @@ include '../view/top.html'
         
     
        <?php include '../view/bottom.html' ?>
-            
-            
+       </body>      
+    </html>        
     

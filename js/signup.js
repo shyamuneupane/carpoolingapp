@@ -1,20 +1,35 @@
 $(document).ready(function() {
-    $('#submit').click(function(event){
+    $('#register').click(function(event){
     
-        data = $('.password').val();
-        var len = data.length;
+//        data = $('#password').val();
+//        confirm = $('#confirmpassword').val();
+//        
+//        if(data!=confirm) {
+//            alert('password mismatch');
+//            event.preventDefault();
+//        }
+//        
         
-        if(len < 1) {
-            alert("Password cannot be blank");
-            // Prevent form submission
-            event.preventDefault();
-        }
-         
-        if($('.password').val() != $('.confpass').val()) {
-            alert("Password and Confirm Password don't match");
-            // Prevent form submission
-            event.preventDefault();
-        }
-         
+        //ajax call
+        
+        $.ajax({
+            url: '../controller/comment_submit.php',
+            data:'{"comment_text":"hhhhhh",                                         "user_id":"1","trip_id":"2","task":"insert"}',          
+   error: function() {
+     alert('error'); 
+   },
+   dataType: 'json',
+   success: function(data) {
+      if(data['success'] == true){
+          alert(data['msg']);
+//          val = data['val'];
+      } else {
+          //TODO
+      }
+   },
+   type: 'POST'
+});
+           
     });
 });
+

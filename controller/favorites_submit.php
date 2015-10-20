@@ -19,40 +19,26 @@ session_start();
 
 
 $data = json_decode(file_get_contents('php://input'), true);
-//print_r($data);
-
-if(isset($data["task"])){
-    $task = $data["task"]; 
-    
-    if($task == "insert")
-        insert($db, $data);
-    else if($task == "update")
-        update($db);
-        
-        
-}
-
-function insert($db, $data){
-    $comment_text = $data["comment_text"];
-$user_id = 1;
+//$comment_text = $data["comment_text"];
+$user_id = $data["user_id"];
 $trip_id = $data["trip_id"];
 //$create_date = $data["created_date"];
 
 //   $comment_text = filter_input(INPUT_POST, "text_comment");
 //    $user_id=$id;
 //    $trip_id= $tpid;
-    $created_date=date("Y-m-d H:m:s");
+  //  $created_date=date("Y-m-d H:m:s");
 
-    $insert = $db->prepare("INSERT INTO comments (comment_text, user_id, trip_id, created_date) VALUES(:comment_text,:user_id,:trip_id, :created_date)");
+    $insert = $db->prepare("INSERT INTO comments (user_id, trip_id) VALUES(:user_id,:trip_id)");
 //    $parameter = array(':comment_text'=>$comment_text,
 //                       ':user_id'=>$user_id,
 //                       ':trip_id'=>$trip_id,
 //                       ':createdDate'=>$created_date
 //                      );
-$insert->bindParam('comment_text', $comment_text); 
+//$insert->bindParam('comment_text', $comment_text); 
 $insert->bindParam('user_id', $user_id); 
 $insert->bindParam('trip_id', $trip_id); 
-$insert->bindParam('created_date', $created_date); 
+//$insert->bindParam('created_date', $created_date); 
 $insert->execute();
     //$id=$db->lastInsertId();
 
@@ -61,12 +47,6 @@ $insert->execute();
     $res = new response(true, "Inserted" , null); 
     header("Content-Type:application/json");
     echo json_encode($res);
-
-}
-
-function update($db) {
-    
-}
 
 //    
 //}

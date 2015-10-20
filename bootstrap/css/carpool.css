@@ -1,12 +1,8 @@
 body{
-    
-   
-    background-color:darkgrey;
-    text-align: center;
-    
+    background-color: azure;
 }
 .container{
-    background-color: white;
+    
     position: absolute;
     width: 75%;
     margin-top: 15px;

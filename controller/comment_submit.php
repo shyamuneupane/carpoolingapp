@@ -64,9 +64,9 @@ $insert->execute();
 
 }
 
-function update($db) {
+/*function update($db) {
     
-}
+}*/
 
 //    
 //}

@@ -20,8 +20,8 @@ if(!$name || !$pass || !$email){
 }
 
 
-$stmt = $db->prepare("INSERT INTO users VALUES (NULL, :username, :password, :email, CURRENT_DATE )");
-$stmt->execute(array(':username'=>$name,':password'=>$pass,':email'=>$email));
+$stmt = $db->prepare("INSERT INTO users VALUES (NULL, :username, :password, :email, :date )");
+$stmt->execute(array(':username'=>$name,':password'=>$pass,':email'=>$email, 'date'=>date('Y/m/d H:i:s')));
 $userId = $db->lastInsertId();
 echo $userId;
 if($stmt){

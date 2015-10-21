@@ -1,19 +1,34 @@
 $(document).ready(function() {
     
-    var uid=$('#uid').val();
+    
+    var userId = $("#uid").val();
+    var username = $("#username").val();
+    var baseUrl = "http://localhost/carpoling/"
     window.onload=trip_load(uid)
    
     $("#share").click(function(){
-        var comment= $('#commenttext').val();
-        if(comment.length==0){
+        var trip_text= $('#triptext').val();
+        
+        if(trip_text.length==0){
             alert("please write you complete ride");
         }
         else{
             
-            var uid=$('#uid').val();
+            
+             
+                
+                $.ajax({ url: baseUrl + "controller/carpooling.php",
+                    data: {action: 'addTrip', trip_text:trip_text},
+                    type: 'post',
+                    dataType: "json",
+                    success: function (output) {
+                    var itemId = output;
+                        
+                    }
+                });
             
            
-            $.post('../controller/trip_submit.php', {'trip_text': comment});
+           // $.post('../controller/trip_submit.php', {'trip_text': trip_text});
             
             $('#commenttext').val(null);  
             trip_load(uid);

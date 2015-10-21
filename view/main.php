@@ -20,12 +20,13 @@ if(!isset($_SESSION['username'])){
        
 </div>
   
-     <textarea placeholder="please share you ride here" required rows="3" cols="150"  class="comment" style="resize:none" id="commenttext"></textarea>
+     <textarea placeholder="please share you ride here" required rows="3" cols="150"  class="comment" style="resize:none" id="triptext"></textarea>
    
         <button class="btn btn-primary" id="share">                            
             <span>Share you ride</span>
         </button>
-        <input type="hidden" id="uid" value="<?=$_SESSION['uid'] ?>"
+        <input type="hidden" id="uid" value="<?=$_SESSION['uid'] ?>" />
+        <input type="hidden" id="username" value="<?=$_SESSION['username'] ?>" />
     
     <br><br>
     

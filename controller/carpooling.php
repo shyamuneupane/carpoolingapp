@@ -7,10 +7,11 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     switch($action) {
             
         case 'addTrip' : addTrip($db); break;
-        case 'deleteTrip' : deleteTrip(); break;
-        case 'addComment': addComment(); break;
-        case 'deleteComment': deleteComment(); break;
-        case 'updateTrip':updateTrip(); break;
+        case 'deleteTrip' : deleteTrip($db); break;
+        case 'addComment': addComment($db); break;
+        case 'deleteComment': deleteComment($db); break;
+        case 'updateTrip':updateTrip($db); break;
+        case 'trip_post':tripPost($db);break;
         
     }
     
@@ -22,17 +23,17 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
     
         $uid=$_SESSION['uid'];
-        $name=$_SESSION['username'];
+        
 
 
 
        
         $stmt = $db->prepare("INSERT INTO trips VALUES (NULL, :trip_text,:user_id,:created_date )");
         $stmt->execute(array(':trip_text'=>$trip_text,':user_id'=>$uid,':created_date'=>date('Y/m/d H:i:s')));
-        $itemId = $db->lastInsertId();
+        $tripId = $db->lastInsertId();
 
         if($stmt){
-            echo $itemId;
+            echo $tripId;
         }else{
             $_SESSION["error-message"]="Something went wrong with database.";
     }
@@ -129,6 +130,11 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }else{
         $_SESSION["todo-add-message"]="Something went wrong with database.";
     }
+}
+
+function tripPost($db){
+    $uid=$_SESSION['uid'];
+    echo $uid;
 }
 
 

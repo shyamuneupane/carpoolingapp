@@ -20,7 +20,7 @@ if(!isset($_SESSION['username'])){
        
 </div>
   
-     <textarea placeholder="please share you ride here" required rows="3" cols="150"  class="comment" style="resize:none" id="triptext"></textarea>
+     <textarea placeholder="please share you ride here" required rows="3" cols="150"  class="trippost" style="resize:none" id="triptext"></textarea>
    
         <button class="btn btn-primary" id="share">                            
             <span>Share you ride</span>
@@ -32,6 +32,10 @@ if(!isset($_SESSION['username'])){
     
     
     <hr class="header-devider">
+    
+    <div class="bs-example">
+        <h1><small>Shared Trips</small></h1></div>
+    <hr class="divider" />
     <div id="trip_head" ></div>
     
 </div>

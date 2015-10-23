@@ -47,6 +47,46 @@ $(document).ready(function() {
         return false;
     }
     });
+    
+    
+    
+    $(".favicon img").click(function(){
+      
+    var tripid=$(this).attr('id');
+        
+        var imagetype=$(".favicon img").attr('src');
+         
+        var index = imagetype.lastIndexOf("/") + 1;
+          
+        var filename = imagetype.substr(index);
+        
+        
+        
+    if(filename==="favorite_add.png"){
+        
+        $(this).attr("src","../images/favourite_accept.png");
+        
+         $.ajax({ url: baseUrl + "controller/carpooling.php",
+                    data: {action: 'addFavTrip', trip_id:tripid},
+                    type: 'post',
+                    dataType: "text",
+                    success: function (output) {
+                        
+                        
+                    }
+                });
+        
+        
+    }
+    else{
+        $(".favicon img").attr("src","../images/favorite_add.png");
+        
+    }
+    });
+    
+    
+    
+
 });
 
 
@@ -61,8 +101,7 @@ function trip_load(uid){
                 dataType: "json",
                 success: function (output) {
                     
-                    createtrip("hello world", '98', "shyamu", '45');
-                    createtrip("hello world", '98', "shyamu", '45');
+                    
                     
                 }
         

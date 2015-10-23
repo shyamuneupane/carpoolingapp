@@ -12,6 +12,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
         case 'deleteComment': deleteComment($db); break;
         case 'updateTrip':updateTrip($db); break;
         case 'trip_post':tripPost($db);break;
+        case 'addFavTrip':addFavTrip($db); break;
         
     }
     
@@ -137,9 +138,36 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
 function tripPost($db){
     $uid=$_SESSION['uid'];
-    echo "hello world";
     
+    try{
+        $sql = "SELECT * FROM trips";
+        $result = $db->query($sql);
+        $results = $result->fetchall();
+        echo json_encode($results);
+	
+}
+catch (PDOException $e){
+	echo "Connection failed: " . $e->getMessage ();
+}
     
+}
+
+function addFavTrip($db){
+    
+    $uid=$_SESSION['uid'];
+    
+    if(isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
+        $trip_id = $_POST['trip_id'];
+    }
+    
+    $tripid = $_POST['trip_id'];
+    
+    $stmt = $db->prepare("INSERT INTO favorites VALUES (NULL, :user_id,:tripid )");
+    $stmt->execute(array(':user_id'=>$uid,':tripid'=>$tripid));
+    
+    echo "success";
+
+
 }
 
 

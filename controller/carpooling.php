@@ -134,7 +134,9 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
 function tripPost($db){
     $uid=$_SESSION['uid'];
-    echo $uid;
+    
+    
+    
 }
 
 

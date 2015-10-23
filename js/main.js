@@ -4,7 +4,7 @@ $(document).ready(function() {
     var userId = $("#uid").val();
     var username = $("#username").val();
     var baseUrl = "http://localhost/carpooling/";
-    window.onload=trip_load(uid)
+    window.onload= trip_load(uid);
    
     $("#share").click(function(){
         var trip_text= $('#triptext').val();
@@ -13,14 +13,10 @@ $(document).ready(function() {
             alert("please write you complete ride");
         }
         else{
-            
-            
-             
-                
                 $.ajax({ url: baseUrl + "controller/carpooling.php",
                     data: {action: 'addTrip', trip_text:trip_text},
                     type: 'post',
-                    dataType: "json",
+                    dataType: "text",
                     success: function (output) {
                     var itemId = output;
                         $('#triptext').val(null);  
@@ -29,18 +25,42 @@ $(document).ready(function() {
                     }
                 });
         }
-    }); 
+    });
+    
+    
+    $(".deleteimage").click(function(){
+    var tripid=$(this).attr('id');
+    if(confirm("Are you sure you want to delete this?")){
+         $.ajax({ url: baseUrl + "controller/carpooling.php",
+                    data: {action: 'deleteTrip', trip_id:tripid},
+                    type: 'post',
+                    dataType: "json",
+                    success: function (output) {
+                        trip_load(uid);
+                        alert("you deleteed ");
+                    }
+                });
+        
+        
+    }
+    else{
+        return false;
+    }
+    });
 });
+
 
 
 function trip_load(uid){
      var baseUrl = "http://localhost/carpooling/";
+      createtrip("hello world", '7', "shyamu", '8');  
         $.ajax({
                 url:baseUrl + "controller/carpooling.php",
                 data:{ action: 'trip_post'},
                 type: 'post',
                 dataType: "json",
                 success: function (output) {
+                    
                     createtrip("hello world", '98', "shyamu", '45');
                     createtrip("hello world", '98', "shyamu", '45');
                     

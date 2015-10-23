@@ -16,6 +16,9 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
     
 }
+
+
+
     
     function addTrip($db){
     if(isset($_POST['trip_text']) && !empty($_POST['trip_text'])) {
@@ -23,10 +26,6 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
     
         $uid=$_SESSION['uid'];
-        
-
-
-
        
         $stmt = $db->prepare("INSERT INTO trips VALUES (NULL, :trip_text,:user_id,:created_date )");
         $stmt->execute(array(':trip_text'=>$trip_text,':user_id'=>$uid,':created_date'=>date('Y/m/d H:i:s')));
@@ -44,22 +43,26 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     
     
     function deleteTrip($db){
-    if(isset($_POST['trip_id']) && !empty($_POST['tripid'])) {
-        $item_id = $_POST['itemid'];
+    if(isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
+        $trip_id = $_POST['trip_id'];
     }
-
-    $stmt = $db->prepare("SELECT * FROM comments WHERE trip_id = :trip_id;");
-    $stmt->execute(array(':trip_id' => $trip_id));
+    
+    $tripid = $_POST['trip_id'];
+    
+    $stmt = $db->prepare("SELECT * FROM comments WHERE trip_id = :tripid;");
+    $stmt->execute(array(':tripid' => $tripid));
+    echo $tripid;
     $row = $stmt->fetchAll();
+        
     if($row)
     {
         $stmt1 = $db->prepare("DELETE FROM comments WHERE trip_id=:trip_id");
-        $stmt1->execute(array(':item_id'=>$item_id));
+        $stmt1->execute(array(':trip_id'=>$row['trip_id']));
     }
 
 
-    $stmt = $db->prepare("DELETE FROM trips WHERE trip_id=:trip_id");
-    $stmt->execute(array(':trip_id'=>$trip_id));
+    $stmt = $db->prepare("DELETE FROM trips WHERE trip_id=:tripid");
+    $stmt->execute(array(':tripid'=>$tripid));
 
     if($stmt){
         echo "1";
@@ -134,7 +137,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 
 function tripPost($db){
     $uid=$_SESSION['uid'];
-    
+    echo "hello world";
     
     
 }

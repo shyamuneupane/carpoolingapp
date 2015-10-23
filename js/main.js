@@ -72,7 +72,7 @@ function createtrip(text, uid, uname, tripid) {
             '<div id="comments-'+tripid+'"></div>'+
         '</div>';
 
-       
+        
 
         $('#trip_head').append(markup);
         

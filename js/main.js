@@ -3,7 +3,7 @@ $(document).ready(function() {
     
     var userId = $("#uid").val();
     var username = $("#username").val();
-    var baseUrl = "http://localhost/carpoling/";
+    var baseUrl = "http://localhost/carpooling/";
     window.onload=trip_load(uid)
    
     $("#share").click(function(){
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 
 function trip_load(uid){
-     var baseUrl = "http://localhost/carpoling/";
+     var baseUrl = "http://localhost/carpooling/";
         $.ajax({
                 url:baseUrl + "controller/carpooling.php",
                 data:{ action: 'trip_post'},

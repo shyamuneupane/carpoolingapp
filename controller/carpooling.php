@@ -13,6 +13,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
         case 'updateTrip':updateTrip($db); break;
         case 'trip_post':tripPost($db);break;
         case 'addFavTrip':addFavTrip($db); break;
+        case 'deleteFavTrip':deleteFavTrip($db); break;
         
     }
     
@@ -160,8 +161,11 @@ function addFavTrip($db){
         $trip_id = $_POST['trip_id'];
     }
     
-    $tripid = $_POST['trip_id'];
     
+     $tripid=$_POST['trip_id'];
+   
+    
+     
     $stmt = $db->prepare("INSERT INTO favorites VALUES (NULL, :user_id,:tripid )");
     $stmt->execute(array(':user_id'=>$uid,':tripid'=>$tripid));
     
@@ -169,6 +173,26 @@ function addFavTrip($db){
 
 
 }
+
+
+function deleteFavTrip($db){
+    echo "hello world";
+    $uid=$_SESSION['uid'];
+    
+    if(isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
+        $trip_id = $_POST['trip_id'];
+    }
+    
+    $tripid = $_POST['trip_id'];
+    echo $tripid+" "+$uid;
+    $stmt = $db->prepare("DELETE FROM favorites WHERE trip_id=:tripid and user_id=:uid");
+    $stmt->execute(array(':tripid'=>$tripid,':uid'=>$uid));
+    
+   
+
+
+}
+
 
 
 ?>

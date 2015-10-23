@@ -6,6 +6,9 @@ $(document).ready(function() {
     var baseUrl = "http://localhost/carpooling/";
     window.onload= trip_load(uid);
    
+    
+    
+    
     $("#share").click(function(){
         var trip_text= $('#triptext').val();
         
@@ -37,6 +40,7 @@ $(document).ready(function() {
                     dataType: "json",
                     success: function (output) {
                         trip_load(uid);
+                        $('#trip_head').empty();
                         alert("you deleteed ");
                     }
                 });
@@ -50,9 +54,12 @@ $(document).ready(function() {
     
     
     
-    $(".favicon img").click(function(){
+    
+    
+    $(".favicon > img").click(function(){
       
-    var tripid=$(this).attr('id');
+    var tripid=$(this).parent().attr('id');
+    
         
         var imagetype=$(".favicon img").attr('src');
          
@@ -72,7 +79,7 @@ $(document).ready(function() {
                     dataType: "text",
                     success: function (output) {
                         
-                        
+                        alert("favourite added!!!");
                     }
                 });
         
@@ -80,6 +87,17 @@ $(document).ready(function() {
     }
     else{
         $(".favicon img").attr("src","../images/favorite_add.png");
+        
+        $.ajax({ url: baseUrl + "controller/carpooling.php",
+                    data: {action: 'deleteFavTrip', trip_id:tripid},
+                    type: 'post',
+                    dataType: "text",
+                    success: function (output) {
+                        alert("favourite deleted!!!");
+                        
+                    }
+                });
+        
         
     }
     });
@@ -94,6 +112,7 @@ $(document).ready(function() {
 function trip_load(uid){
      var baseUrl = "http://localhost/carpooling/";
       createtrip("hello world", '7', "shyamu", '8');  
+    createtrip("hello world", '7', "shyamu", '8');  
         $.ajax({
                 url:baseUrl + "controller/carpooling.php",
                 data:{ action: 'trip_post'},
@@ -130,8 +149,6 @@ function createtrip(text, uid, uname, tripid) {
             '<div><button class="comment-btn btn-sm btn-success"  id="'+tripid+'">Comment</button></div>'+
             '<div id="comments-'+tripid+'"></div>'+
         '</div>';
-
-        
 
         $('#trip_head').append(markup);
         

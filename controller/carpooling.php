@@ -122,15 +122,28 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
 }
 
+
+
+
+
+
 function tripPost($db){
     $uid=$_SESSION['uid'];
     
     try{
-        $sql = "SELECT * FROM trips";
-        $result = $db->query($sql);
-        $results = $result->fetchall();
-        echo json_encode($results);
+	$stmt = $db->prepare("select * from trips where trip_id in 
+	(select trip_id from favorites where user_id=:uid)");
+	$stmt->execute(array(':uid'=>$uid));
+	$trip = $stmt->fetchall();
 	
+	$stmt2 = $db->prepare("select * from trips where trip_id not in
+	(select trip_id from favorites where user_id=:uid )");
+	$stmt2->execute(array(':uid'=>$uid));
+	$trip2 = $stmt2->fetchall();
+	
+	$result = array_merge($trip, $trip2);
+    header('Content-Type: application/json');
+	echo json_encode($result);
 }
 catch (PDOException $e){
 	echo "Connection failed: " . $e->getMessage ();

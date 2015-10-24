@@ -5,7 +5,7 @@
 
 $name=  filter_input(INPUT_POST, "username");
 
-$password= filter_input(INPUT_POST, "pass");
+$password= filter_input(INPUT_POST, "password");
 
 $pass = password_hash($password,PASSWORD_DEFAULT);
 $email= filter_input(INPUT_POST, "email");

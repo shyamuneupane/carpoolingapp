@@ -31,6 +31,8 @@ $(document).ready(function() {
     });
     
     
+    
+    
     $(".deleteimage").click(function(){
     var tripid=$(this).attr('id');
     if(confirm("Are you sure you want to delete this?")){
@@ -122,26 +124,39 @@ $(document).ready(function() {
 
 
 
+
+
+
+
 function trip_load(uid){
      var baseUrl = "http://localhost/carpooling/";
-      createtrip("hello world", '7', "shyamu", '8');  
-    createtrip("hello world", '7', "shyamu", '9');  
-        $.ajax({
-                url:baseUrl + "controller/carpooling.php",
-                data:{ action: 'trip_post'},
+        
+            $.ajax({ 
+                url: baseUrl + "controller/carpooling.php",
+                data: {action: 'trip_post'}, 
                 type: 'post',
                 dataType: "json",
-                success: function (output) {
-                    
-                    
-                    
-                }
-        
-        });
-}
+                success: function(output){
+                  var array = JSON.parse(JSON.stringify(output));
+                    array.forEach(function(obj) {
+				        createtrip(obj.trip_text, obj.user_id, obj.,obj.trip_id);
+			});
+        }
+                  
+                  });   
+                       
+                
+               
 
+            }
 
-
+            
+            
+            
+            
+            
+            
+            
 function createtrip(text, uid, uname, tripid) {
         
         var markup = 

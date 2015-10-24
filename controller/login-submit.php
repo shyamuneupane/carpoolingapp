@@ -21,21 +21,23 @@ try {
     $row = $stmt->fetch();
     
     
+  if($row){
+        if(password_verify($password, $row["password"])) {
+            $_SESSION["username"]=$req_name;
+             $_SESSION['uid'] = $row["user_id"];
+        
+            header("Location: ../view/main.php");
+        } else {
+            echo $req_name;
+            $_SESSION['message']="Invalid username or password";
+    
+        //header("Location: ../view/login.php");
+            exit();
+            }    
+      }
     
     
-    if(password_verify($password, $row["password"])) {
-       $_SESSION["username"]=$req_name;
-        $_SESSION['uid'] = $row["user_id"];
-        
-        header("Location: ../view/main.php");
-    } else {
-        echo $req_name;
-    $_SESSION['message']="Invalid username or password";
-        
-        
-    //header("Location: ../view/login.php");
-    exit();
-}
+  
 } catch (PDOException $e) {
     ?>
     <p>Sorry, a database error occurred. Please try again later.</p>

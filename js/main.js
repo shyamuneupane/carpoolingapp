@@ -30,12 +30,7 @@ $(document).ready(function() {
     })
     
     
-    /*Note: 
-    #trip_head ----------------parent divId 
-    .deleteimage ---------child class name 
-    ------use this for other type too... toriiiiiiiiiiiiiiiiiiiiiiiiiiii...........................damnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    
-    */
+  
     $("#trip_head").on('click','.deleteimage',function(){
          
     var tripid=$(this).attr('id');
@@ -49,7 +44,7 @@ $(document).ready(function() {
                         $('#trip_head').empty();
                         trip_load(uid);
                         
-                        
+        
                     }
                 });
         
@@ -60,31 +55,19 @@ $(document).ready(function() {
     }
     });
     
-     /*Note: 
-    #trip_head ----------------parent divId 
-    .deleteimage ---------child class name 
-    ------use this for other type too... toriiiiiiiiiiiiiiiiiiiiiiiiiiii...........................damnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    
-    */
-
-    
-    
-    
-    /*
-    $(".favicon > img").click(function(){
-      
-    var tripid=$(this).parent().attr('id');
-    
-        
+   $("#trip_head").on('click','.favicon > img',function(){
+       
+       var tripid=$(this).parent().attr('id');
+       
         var imagetype=$(".favicon img").attr('src');
          
         var index = imagetype.lastIndexOf("/") + 1;
           
         var filename = imagetype.substr(index);
-        
-        
-        
-    if(filename==="favorite_add.png"){
+   
+    
+       
+       if(filename==="favorite_add.png"){
         
         $(this).attr("src","../images/favourite_accept.png");
         
@@ -96,11 +79,9 @@ $(document).ready(function() {
                         
                         alert("favourite added!!!");
                     }
-                });
-        
-        
-    }
-    else{
+                }); 
+            }
+        else{
         $(".favicon img").attr("src","../images/favorite_add.png");
         
         $.ajax({ url: baseUrl + "controller/carpooling.php",
@@ -115,7 +96,13 @@ $(document).ready(function() {
         
         
     }
-    });*/
+       
+   
+   });
+
+    
+    
+    
     
     $('.comment-btn').click(function(){
         

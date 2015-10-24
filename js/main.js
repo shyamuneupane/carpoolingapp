@@ -34,8 +34,10 @@ $(document).ready(function() {
     $("#trip_head").on('click','.deleteimage',function(){
          
     var tripid=$(this).attr('id');
-        
-    if(confirm("Are you sure you want to delete this?")){
+        var userid=$(this).parent(".tripheader").attr('id');
+        if(userid===userId){
+            
+             if(confirm("Are you sure you want to delete this?")){
          $.ajax({ url: baseUrl + "controller/carpooling.php",
                     data: {action: 'deleteTrip', trip_id:tripid},
                     type: 'post',
@@ -53,6 +55,13 @@ $(document).ready(function() {
     else{
         return false;
     }
+        }
+        else{
+        alert("you cannot delete this post");
+        
+        }
+        
+   
     });
     
    $("#trip_head").on('click','.favicon > img',function(){
@@ -161,7 +170,7 @@ function createtrip(text, uid, uname, tripid) {
         
         var markup = 
             '<div id="main-trip-content-'+tripid+'">' +
-            '<div class="tripheader">'+
+            '<div class="tripheader" id="'+uid+'">'+
             '<div class="deleteimage" id="'+tripid+'">'+
                 '<img src="../images/delete.png">'+
                '</div>'+

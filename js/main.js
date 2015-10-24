@@ -102,6 +102,19 @@ $(document).ready(function() {
     }
     });
     
+    $('.comment-btn').click(function(){
+        
+       
+        var id=this.id;
+
+        var content=$("#comment-textarea-"+id).val();
+        alert(content);
+        
+        
+    }
+                                               
+  );
+    
     
     
 
@@ -112,7 +125,7 @@ $(document).ready(function() {
 function trip_load(uid){
      var baseUrl = "http://localhost/carpooling/";
       createtrip("hello world", '7', "shyamu", '8');  
-    createtrip("hello world", '7', "shyamu", '8');  
+    createtrip("hello world", '7', "shyamu", '9');  
         $.ajax({
                 url:baseUrl + "controller/carpooling.php",
                 data:{ action: 'trip_post'},
@@ -145,8 +158,8 @@ function createtrip(text, uid, uname, tripid) {
                 '<div id="trip-'+tripid+'">' +
                         text +
             '</div></div>'+
-            '<div id="comment-textarea-'+tripid+'"><textarea rows="2" cols="50"></textarea></div>' +
-            '<div><button class="comment-btn btn-sm btn-success"  id="'+tripid+'">Comment</button></div>'+
+            '<div><textarea rows="2" cols="50" id="comment-textarea-'+tripid+'"></textarea></div>' +
+            '<div><button class="comment-btn btn-sm btn-success"  id="'+tripid+'" >Comment</button></div>'+
             '<div id="comments-'+tripid+'"></div>'+
         '</div>';
 

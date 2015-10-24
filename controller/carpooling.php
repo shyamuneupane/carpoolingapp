@@ -9,7 +9,6 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
         case 'addTrip' : addTrip($db); break;
         case 'deleteTrip' : deleteTrip($db); break;
         case 'addComment': addComment($db); break;
-        case 'deleteComment': deleteComment($db); break;
         case 'updateTrip':updateTrip($db); break;
         case 'trip_post':tripPost($db);break;
         case 'addFavTrip':addFavTrip($db); break;
@@ -75,21 +74,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     
     
     
-    function deleteComment($db){
-    if(isset($_POST['commentid']) && !empty($_POST['commentid'])) {
-        $comment_id = $_POST['commentid'];
-    }
-
-    $stmt = $db->prepare("DELETE FROM comments WHERE comment_id=:comment_id");
-    $stmt->execute(array(':comment_id'=>$comment_id));
-
-    if($stmt){
-        echo "1";
-    }else{
-        $_SESSION["comment-delete-message"]="Something went wrong with database.";
-    }
-
-}
+   
     
     
     function updateTrip($db){

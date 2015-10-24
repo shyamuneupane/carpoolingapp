@@ -11,6 +11,16 @@ if(!isset($_SESSION['username'])){
 <a href="../controller/logout.php" id="signout">signout  (<?= $_SESSION['username'] ?>)</a>
 
 <hr class="header-devider" >
+<div class="container">
+  <div class="input-group">
+   <input class="form-control input-lg" placeholder="Search" type="text">
+   <span class="input-group-btn">
+      <button class="btn btn-primary input-lg" type="button"><span class="glyphicon glyphicon-search"></span></button>
+   </span>
+  </div><!-- /input-group -->
+</div>
+
+<br><br>
 
   
 <div class="carpoolmain">

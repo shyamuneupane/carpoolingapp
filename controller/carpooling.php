@@ -123,21 +123,30 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 }
 
 function tripPost($db){
+    
     $uid=$_SESSION['uid'];
     
-    try{
-	$stmt = $db->prepare("select * from trips where trip_id in 
-	(select trip_id from favorites where user_id=:uid)");
+  try{
+	$stmt = $db->prepare("select a.trip_id, a.trip_text,a.user_id,b.username from trips as a 
+							inner join users as b on a.user_id=b.user_id
+							where a.trip_id in 
+							(select trip_id from favorites where user_id=:uid)
+							order by a.created_date desc
+						");
 	$stmt->execute(array(':uid'=>$uid));
 	$trip = $stmt->fetchall();
 	
-	$stmt2 = $db->prepare("select * from trips where trip_id not in
-	(select trip_id from favorites where user_id=:uid)");
+	$stmt2 = $db->prepare("select a.trip_id, a.trip_text,a.user_id,b.username from trips as a 
+							inner join users as b on a.user_id=b.user_id
+							where a.trip_id  not in 
+							(select trip_id from favorites where user_id=:uid)
+							order by a.created_date desc
+						");
 	$stmt2->execute(array(':uid'=>$uid));
 	$trip2 = $stmt2->fetchall();
 	
 	$result = array_merge($trip, $trip2);
-    header('Content-Type: application/json');
+	header("Content-Type: application/json; charset=utf-8", true);
 	echo json_encode($result);
 }
 catch (PDOException $e){

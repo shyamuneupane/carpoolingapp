@@ -8,7 +8,6 @@ $(document).ready(function() {
    
     
     
-    
     $("#share").click(function(){
         var trip_text= $('#triptext').val();
         
@@ -28,20 +27,29 @@ $(document).ready(function() {
                     }
                 });
         }
-    });
+    })
     
     
-    $(".deleteimage").click(function(){
+    /*Note: 
+    #trip_head ----------------parent divId 
+    .deleteimage ---------child class name 
+    ------use this for other type too... toriiiiiiiiiiiiiiiiiiiiiiiiiiii...........................damnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    
+    */
+    $("#trip_head").on('click','.deleteimage',function(){
+         
     var tripid=$(this).attr('id');
+        
     if(confirm("Are you sure you want to delete this?")){
          $.ajax({ url: baseUrl + "controller/carpooling.php",
                     data: {action: 'deleteTrip', trip_id:tripid},
                     type: 'post',
                     dataType: "json",
                     success: function (output) {
-                        trip_load(uid);
                         $('#trip_head').empty();
-                        alert("you deleteed ");
+                        trip_load(uid);
+                        
+                        
                     }
                 });
         
@@ -52,10 +60,17 @@ $(document).ready(function() {
     }
     });
     
+     /*Note: 
+    #trip_head ----------------parent divId 
+    .deleteimage ---------child class name 
+    ------use this for other type too... toriiiiiiiiiiiiiiiiiiiiiiiiiiii...........................damnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    
+    */
+
     
     
     
-    
+    /*
     $(".favicon > img").click(function(){
       
     var tripid=$(this).parent().attr('id');
@@ -100,7 +115,7 @@ $(document).ready(function() {
         
         
     }
-    });
+    });*/
     
     $('.comment-btn').click(function(){
         
@@ -135,20 +150,18 @@ function trip_load(uid){
                 type: 'post',
                 dataType: "json",
                 success: function(output){
+                    $('#trip_head').empty();
                   var array = JSON.parse(JSON.stringify(output));
                     array.forEach(function(obj) {
-				        createtrip(obj.trip_text, obj.user_id, username,obj.trip_id);
+                        
+				        createtrip(obj.trip_text, obj.user_id, obj.username,obj.trip_id);
 			});
         }
                   
-                  });   
-                       
-                
-               
+    });   
+  }
 
-            }
-
-            
+         
             
             
             

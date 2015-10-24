@@ -31,8 +31,6 @@ $(document).ready(function() {
     });
     
     
-    
-    
     $(".deleteimage").click(function(){
     var tripid=$(this).attr('id');
     if(confirm("Are you sure you want to delete this?")){
@@ -139,7 +137,7 @@ function trip_load(uid){
                 success: function(output){
                   var array = JSON.parse(JSON.stringify(output));
                     array.forEach(function(obj) {
-				        createtrip(obj.trip_text, obj.user_id, obj.,obj.trip_id);
+				        createtrip(obj.trip_text, obj.user_id, username,obj.trip_id);
 			});
         }
                   

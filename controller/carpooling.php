@@ -122,11 +122,6 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
     }
 }
 
-
-
-
-
-
 function tripPost($db){
     $uid=$_SESSION['uid'];
     
@@ -137,7 +132,7 @@ function tripPost($db){
 	$trip = $stmt->fetchall();
 	
 	$stmt2 = $db->prepare("select * from trips where trip_id not in
-	(select trip_id from favorites where user_id=:uid )");
+	(select trip_id from favorites where user_id=:uid)");
 	$stmt2->execute(array(':uid'=>$uid));
 	$trip2 = $stmt2->fetchall();
 	

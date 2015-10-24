@@ -98,21 +98,27 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 }
     
     
+
+
+
+
     function addComment($db){
-    if(isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
-        $item_id = $_POST['itemid'];
-    }
-
+        if(isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
+            $trip_id = $_POST['trip_id'];
+        }
+        
     if(isset($_POST['comment']) && !empty($_POST['comment'])) {
-        $comment = $_POST['text'];
+        $comment = $_POST['comment'];
     }
-
-    if(isset($_POST['userid']) && !empty($_POST['userid'])) {
-        $user_id = $_POST['userid'];
-    }
+        
+        $user_id=$_SESSION['uid'];
+        
+    
 
     $stmt = $db->prepare("INSERT INTO comments VALUES (NULL,:comment_text,:user_id,:trip_id,:created_date )");
-    $stmt->execute(array(':comment_text'=>$comment, ':user_id'=>$user_id, ':item_id'=>$item_id,':created_date'=>date('Y/m/d H:i:s')));
+        
+        
+    $stmt->execute(array(':comment_text'=>$comment, ':user_id'=>$user_id, ':trip_id'=>$trip_id,':created_date'=>date('Y/m/d H:i:s')));
     $commentId = $db->lastInsertId();
 
     if($stmt){

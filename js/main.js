@@ -102,25 +102,27 @@ $(document).ready(function() {
 
     
     
-    
-    
-    $('.comment-btn').click(function(){
+    $("#trip_head").on('click','.comment-btn',function(){
         
-       
-        var id=this.id;
+        var tripid=this.id;
 
-        var content=$("#comment-textarea-"+id).val();
-        alert(content);
+        var content=$("#comment-textarea-"+tripid).val();
         
-        
-    }
-                                               
-  );
+         $.ajax({ url: baseUrl + "controller/carpooling.php",
+                    data: {action: 'addComment', trip_id:tripid, comment:content},
+                    type: 'post',
+                    dataType: "text",
+                    success: function (output) {
+                        createComment(content, tripid, output);
+                    }
+                });
+    });
     
+   
     
     
 
-});
+});  //end of document ready function 
 
 
 

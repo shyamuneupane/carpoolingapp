@@ -28,13 +28,18 @@ try {
         
             header("Location: ../view/main.php");
         } else {
-            echo $req_name;
+            header("Location: ../view/login.php");
             $_SESSION['message']="Invalid username or password";
     
-        //header("Location: ../view/login.php");
+        header("Location: ../view/login.php");
             exit();
             }    
       }
+    else{
+    
+    header("Location: ../view/login.php");
+    
+    }
     
     
   
